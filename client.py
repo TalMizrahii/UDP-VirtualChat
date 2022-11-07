@@ -14,6 +14,7 @@ while True:
 
     if not bool(data):
         print("Illegal request")
+        continue
     print(str(data))
     if msg[0] == 4:
         break
