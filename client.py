@@ -1,10 +1,20 @@
 import socket
+import sys
 
+server_ip = str(sys.argv[1])
+server_port = int(sys.argv[2])
+
+msg = input()
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.sendto(b'Tal Mizrahi 206960890, Yuval Arbel 206945107', ('10.0.2.15', 12345))
 
-data, addr = s.recvfrom(1024)
-print(str(data), addr)
+while True:
+    s.sendto(msg.encode(), (server_ip, server_port))
+    data, addr = s.recvfrom(1024)
 
-s.close()
+    if not bool(data):
+        print("Illegal request")
+    print(str(data))
+    if msg[0] == 4:
+        break
+
