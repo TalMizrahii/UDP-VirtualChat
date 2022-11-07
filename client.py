@@ -17,4 +17,4 @@ while True:
     print(str(data))
     if msg[0] == 4:
         break
-
+    msg = input()
