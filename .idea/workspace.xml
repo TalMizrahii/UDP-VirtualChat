@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!">
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -280,6 +281,7 @@
     <MESSAGE value="additional send_names" />
     <MESSAGE value="major changes in the server, added multiple functions." />
     <MESSAGE value="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!" />
+    <MESSAGE value="server change 1.1:&#10;switch case update" />
+    <option name="LAST_COMMIT_MESSAGE" value="server change 1.1:&#10;switch case update" />
   </component>
 </project>

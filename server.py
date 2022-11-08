@@ -36,9 +36,10 @@ def add_to_database(name, address):
             data_base[key][1].append(name + "has joined")
         # Sending the new member a message about all current listed members.
         send_names(address)
+    else:
+        s.sendto(''.encode(),address)
     # Adding the new user to the database.
     data_base[address] = (name, [])
-
 
 
 # Sending to all group members a message from a user.
@@ -76,42 +77,60 @@ def leave_group(address):
         data_base[key][1].append(leaving_user_name + "has left the group")
 
 
+# Update a specific client with all the saved message he missed.
 def update_me(address):
-    # Need to be written by Yuval.
-    pass
+    # Init an empty message.
+    all_msg = ''
+
+    # Appending all the saved message to one string.
+    for msg in data_base[address][1]:
+        # Add the message with \n.
+        all_msg += msg + '\n'
 
 
+    # Remove the last \n from the complete message.
+    all_msg = all_msg[:-1]
+    # Sending the complete message to the client.
+    s.sendto(all_msg.encode(), address)
+    data_base[address][1].clear()
+
+
+# Indicate the client request and execute his request.
 def switch(full_msg, address):
     command_num = int(full_msg[2])
     sorted_message = full_msg[4:-1]
+    # "Switch case"
     match command_num:
+        # Fulfill the client request to join the group.
         case 1:
             add_to_database(sorted_message, address)
             return True
+        # Fulfill the client request to send a message to the group.
         case 2:
-            #####
-            # Update function!!!!
-            #####
+            update_me(address)
             send_message_user(sorted_message, address)
             return True
+        # Fulfill the client request to change is name
         case 3:
-            #####
-            # Update function!!!!
-            #####
-            return change_name(sorted_message, address)
+            update_me(address)
+            change_name(sorted_message, address)
+            return True
+        # Fulfill the client request to leave the group.
         case 4:
-            return leave_group(address)
+            update_me(address)
+            leave_group(address)
+            return True
         case 5:
-            #####
-            # Update function!!!!
-            #####
-            return update_me(address)
+            update_me(address)
+            update_me(address)
+            return True
+        # The default case when is request is not legal.
         case _:
             return False
 
 
 while True:
-    #DEleteeeee
+    # DEleteeeee
     print(data_base)
 
     # Receive data from everyone.
