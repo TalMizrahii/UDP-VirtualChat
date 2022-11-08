@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!">
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="server and client update:&#10;client change - print the server reply&#10;server change - switch update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +36,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.client">
+  <component name="RunManager" selected="Python.server">
     <configuration name="client" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Virtualchat" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -247,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667927559206</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="server and client update:&#10;client change - print the server reply&#10;server change - switch update">
+      <created>1667932444117</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667932444117</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -282,6 +289,7 @@
     <MESSAGE value="major changes in the server, added multiple functions." />
     <MESSAGE value="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!" />
     <MESSAGE value="server change 1.1:&#10;switch case update" />
-    <option name="LAST_COMMIT_MESSAGE" value="server change 1.1:&#10;switch case update" />
+    <MESSAGE value="server and client update:&#10;client change - print the server reply&#10;server change - switch update" />
+    <option name="LAST_COMMIT_MESSAGE" value="server and client update:&#10;client change - print the server reply&#10;server change - switch update" />
   </component>
 </project>

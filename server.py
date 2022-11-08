@@ -23,7 +23,7 @@ def send_names(address):
         # Adding all names to the string.
         name_msg += data_base[key][0] + '\n'
     # Removing the last unnecessary '\n'
-    name_msg = name_msg[0: len(name_msg) - 2]
+    name_msg = name_msg[:-1]
     # Sending the message to the user.
     s.sendto(name_msg.encode(), address)
 
