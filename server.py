@@ -33,7 +33,7 @@ def add_to_database(name, address):
     if data_base:
         # If the database is not empty, add the notification about a new group member to all users.
         for key in data_base:
-            data_base[key][1].append(name + "has joined")
+            data_base[key][1].append(name + " has joined")
         # Sending the new member a message about all current listed members.
         send_names(address)
     else:
@@ -50,7 +50,7 @@ def send_message_user(sorted_message, address):
     for key in data_base:
         # all user's, except the ine who sent the message.
         if key != address:
-            data_base[key][1].append(sender_name, ': ', sorted_message)
+            data_base[key][1].append(sender_name + ": " + sorted_message)
 
 
 # Changing the name of the user and updating all other group members.
@@ -61,7 +61,7 @@ def change_name(new_name, address):
     for key in data_base:
         # Add the message to all group members except the user.
         if key != address:
-            data_base[key][1].append(old_name + "changed his name to" + new_name)
+            data_base[key][1].append(old_name + " changed his name to " + new_name)
     # Changing the user's name.
     data_base[address][0] = new_name
 
@@ -74,7 +74,7 @@ def leave_group(address):
     data_base.pop(address)
     # Updating all current group members.
     for key in data_base:
-        data_base[key][1].append(leaving_user_name + "has left the group")
+        data_base[key][1].append(leaving_user_name + " has left the group")
 
 
 # Update a specific client with all the saved message he missed.
