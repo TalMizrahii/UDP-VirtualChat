@@ -81,7 +81,8 @@ def leave_group(address):
     # Removing the person from the member's list
     for person in listed_members:
         if person[0] == address:
-            listed_members.pop(person)
+            listed_members.remove(person)
+            break
 
 
 # Update a specific client with all the saved message he missed.
@@ -96,7 +97,6 @@ def update_me(address):
 
     # Remove the last \n from the complete message.
     all_msg = all_msg[:-1]
-    print(all_msg)
     # Sending the complete message to the client.
     s.sendto(all_msg.encode(), address)
     data_base[address][1].clear()
@@ -128,7 +128,6 @@ def switch(full_msg, address):
             leave_group(address)
             return True
         case 5:
-            update_me(address)
             update_me(address)
             return True
         # The default case when is request is not legal.
