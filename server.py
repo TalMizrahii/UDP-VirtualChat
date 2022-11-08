@@ -6,7 +6,7 @@ server_port = str(sys.argv[1])
 
 s.bind(('', int(server_port)))
 
-#data_base = {address : (name, [messages list])}
+# data_base = {address : (name, [messages list])}
 data_base = {}
 
 
@@ -14,6 +14,14 @@ def in_data_base(address):
     if data_base.get(address):
         return True
     return False
+
+
+def send_names(address):
+    name_msg = ''
+    for key in data_base:
+        name_msg += data_base[key].get(0) + '\n'
+    name_msg = name_msg[0: len(name_msg) - 1]
+    s.sendto(name_msg.encode(), address)
 
 
 def add_to_database(name, address):
@@ -30,40 +38,21 @@ def add_to_database(name, address):
 
 
 def switch(full_msg, address):
-    command_num = int(message[2])
-    sorted_message = message[2:]
-    if command_num == 1:
-        return add_to_database(sorted_message, address)
-    elif command_num == 2:
-        return send_message_user()
-    elif command_num == 3:
-        return change_name()
-    elif command_num == 4:
-        return leave_group()
-    elif command_num == 5:
-        return update_me()
-    return False
-
-
-
-def switch1(full_msg, address):
-    command_num = int(message[2])
-    sorted_message = message[2:]
+    command_num = int(full_msg[2])
+    sorted_message = full_msg[2:]
     match command_num:
         case 1:
             return add_to_database(sorted_message, address)
         case 2:
             return send_message_user()
-         case 3:
-             return change_name()
-         case 4:
-              return leave_group()
-         case 5:
+        case 3:
+            return change_name()
+        case 4:
+            return leave_group()
+        case 5:
             return update_me()
         case _:
             return False
-
-
 
 
 while True:
