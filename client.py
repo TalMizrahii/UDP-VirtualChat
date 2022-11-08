@@ -12,9 +12,8 @@ while True:
     s.sendto(msg.encode(), (server_ip, server_port))
     data, addr = s.recvfrom(1024)
 
-    if not bool(data):
+    if data == str(b'False'):
         print("Illegal request")
-    print(str(data))
     if msg[0] == 4:
         break
 

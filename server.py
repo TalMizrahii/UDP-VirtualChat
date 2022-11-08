@@ -41,6 +41,7 @@ def add_to_database(name, address):
     data_base[address] = (name, [])
 
 
+
 # Sending to all group members a message from a user.
 def send_message_user(sorted_message, address):
     # Getting The sender's name.
@@ -111,6 +112,9 @@ def switch(full_msg, address):
 
 
 while True:
+    #DEleteeeee
+    print(data_base)
+
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
     # Store the data in a new string.
