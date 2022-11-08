@@ -16,7 +16,7 @@ while True:
     if server_reply == str(b'False'):
         print("Illegal request")
         continue
-    elif server_reply == '':
+    elif server_reply == str(b''):
         continue
     print(server_reply[2:-1])
     if msg[0] == 4:

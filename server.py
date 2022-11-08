@@ -37,7 +37,7 @@ def add_to_database(name, address):
         # Sending the new member a message about all current listed members.
         send_names(address)
     else:
-        s.sendto(''.encode(),address)
+        s.sendto(''.encode(), address)
     # Adding the new user to the database.
     data_base[address] = (name, [])
 
@@ -86,7 +86,6 @@ def update_me(address):
     for msg in data_base[address][1]:
         # Add the message with \n.
         all_msg += msg + '\n'
-
 
     # Remove the last \n from the complete message.
     all_msg = all_msg[:-1]
