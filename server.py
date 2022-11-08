@@ -45,9 +45,9 @@ def add_to_database(name, address):
 def send_message_user(sorted_message, address):
     # Getting The sender's name.
     sender_name = data_base[address][0]
-    # appending to all group member the new message to the messages list.
+    # Appending to all group member the new message to the messages list.
     for key in data_base:
-        # all user's, except the ine who sent the message.
+        # All user's, except the ine who sent the message.
         if key != address:
             data_base[key][1].append(sender_name, ': ', sorted_message)
 
