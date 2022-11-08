@@ -246,7 +246,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667927559206</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!">
+      <created>1667928306593</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667928306593</updated>
+    </task>
+    <task id="LOCAL-00024" summary="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!">
+      <created>1667928364710</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667928364710</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
