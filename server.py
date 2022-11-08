@@ -45,8 +45,29 @@ def switch(full_msg, address):
     return False
 
 
+
+def switch1(full_msg, address):
+    command_num = int(message[2])
+    sorted_message = message[2:]
+    match command_num:
+        case 1:
+            return add_to_database(sorted_message, address)
+        case 2:
+            return send_message_user()
+         case 3:
+             return change_name()
+         case 4:
+              return leave_group()
+         case 5:
+            return update_me()
+        case _:
+            return False
+
+
+
+
 while True:
-    data, addr = s.recvfrom(144523463)
+    data, addr = s.recvfrom(1024)
     message = str(data)
     if not message[2].isnumeric() or not int(message[2]) in range(1, 6):
         s.sendto(str(False).encode(), addr)
