@@ -3,7 +3,6 @@ import sys
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server_port = str(sys.argv[1])
-
 s.bind(('', int(server_port)))
 
 # data_base = {address : (name, [messages list])}
