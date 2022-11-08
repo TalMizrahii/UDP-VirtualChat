@@ -7,6 +7,8 @@ s.bind(('', int(server_port)))
 
 # data_base = {address : (name, [messages list])}
 data_base = {}
+# listed_members = [(address, [name]), (address, [name])]
+listed_members = []
 
 
 def in_data_base(address):
@@ -17,14 +19,10 @@ def in_data_base(address):
 
 # Sending to a new user message about all current members in the group.
 def send_names(address):
-    # Creating a new empty string.
     name_msg = ''
-    for key in data_base:
-        # Adding all names to the string.
-        name_msg += data_base[key][0] + "\n"
-    # Removing the last unnecessary '\n'
+    for person in listed_members[::-1]:
+        name_msg += person[1][0] + "\n"
     name_msg = name_msg[:-1]
-    print(name_msg)
     # Sending the message to the user.
     s.sendto(name_msg.encode(), address)
 
@@ -40,13 +38,14 @@ def add_to_database(name, address):
     else:
         s.sendto(''.encode(), address)
     # Adding the new user to the database.
-    data_base[address] = (name, [])
+    data_base[address] = ([name], [])
+    listed_members.append((address, [name]))
 
 
 # Sending to all group members a message from a user.
 def send_message_user(sorted_message, address):
     # Getting The sender's name.
-    sender_name = data_base[address][0]
+    sender_name = data_base[address][0][0]
     # appending to all group member the new message to the messages list.
     for key in data_base:
         # all user's, except the ine who sent the message.
@@ -57,25 +56,32 @@ def send_message_user(sorted_message, address):
 # Changing the name of the user and updating all other group members.
 def change_name(new_name, address):
     # Saving the old name of the user.
-    old_name = data_base[address][0]
+    old_name = data_base[address][0][0]
     # Updating all users about the change.
     for key in data_base:
         # Add the message to all group members except the user.
         if key != address:
             data_base[key][1].append(old_name + " changed his name to " + new_name)
     # Changing the user's name.
-    data_base[address][0] = new_name
+    for person in listed_members:
+        if person[0] == address:
+            person[1][0] = new_name
+    data_base[address][0][0] = new_name
 
 
 # Removing a user from the database and updating all current group members.
 def leave_group(address):
     # Saving the user's name.
-    leaving_user_name = data_base[address][0]
+    leaving_user_name = data_base[address][0][0]
     # Deleting the user.
     data_base.pop(address)
     # Updating all current group members.
     for key in data_base:
         data_base[key][1].append(leaving_user_name + " has left the group")
+    # Removing the person from the member's list
+    for person in listed_members:
+        if person[0] == address:
+            listed_members.pop(person)
 
 
 # Update a specific client with all the saved message he missed.
