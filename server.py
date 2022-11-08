@@ -77,6 +77,7 @@ def leave_group(address):
 
 
 def update_me(address):
+    # Need to be written by Yuval.
     pass
 
 
