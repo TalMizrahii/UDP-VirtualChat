@@ -41,13 +41,14 @@ def add_to_database(name, address):
     data_base[address] = (name, [])
 
 
+
 # Sending to all group members a message from a user.
 def send_message_user(sorted_message, address):
     # Getting The sender's name.
     sender_name = data_base[address][0]
-    # Appending to all group member the new message to the messages list.
+    # appending to all group member the new message to the messages list.
     for key in data_base:
-        # All user's, except the ine who sent the message.
+        # all user's, except the ine who sent the message.
         if key != address:
             data_base[key][1].append(sender_name, ': ', sorted_message)
 
@@ -83,9 +84,7 @@ def update_me(address):
 
 def switch(full_msg, address):
     command_num = int(full_msg[2])
-    print(command_num)
     sorted_message = full_msg[4:-1]
-    print(sorted_message)
     match command_num:
         case 1:
             add_to_database(sorted_message, address)
@@ -113,7 +112,7 @@ def switch(full_msg, address):
 
 
 while True:
-    # DEleteeeee
+    #DEleteeeee
     print(data_base)
 
     # Receive data from everyone.
