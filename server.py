@@ -24,6 +24,7 @@ def send_names(address):
         name_msg += data_base[key][0] + "\n"
     # Removing the last unnecessary '\n'
     name_msg = name_msg[:-1]
+    print(name_msg)
     # Sending the message to the user.
     s.sendto(name_msg.encode(), address)
 
@@ -85,10 +86,11 @@ def update_me(address):
     # Appending all the saved message to one string.
     for msg in data_base[address][1]:
         # Add the message with \n.
-        all_msg += msg + "\n"
+        all_msg = all_msg + msg + "\n"
 
     # Remove the last \n from the complete message.
     all_msg = all_msg[:-1]
+    print(all_msg)
     # Sending the complete message to the client.
     s.sendto(all_msg.encode(), address)
     data_base[address][1].clear()
