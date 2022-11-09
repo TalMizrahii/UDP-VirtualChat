@@ -16,7 +16,9 @@ while True:
     data, addr = s.recvfrom(1024)
     server_reply = str(data)
     # If the client requests to leave.
-    if msg[0] == 4:
+    if msg[0] == '4':
+        # Closing the socket' client request to leave the group.
+        s.close()
         break
     # The client must get a reply, so if it's empty (no pending updates), continue.
     if server_reply == str(b''):

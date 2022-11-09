@@ -1,8 +1,10 @@
 import socket
 import sys
 
+# Opening the server's socket.
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server_port = str(sys.argv[1])
+# Binding the server port (received from the sys).
 s.bind(('', int(server_port)))
 
 # data_base = {address : (name, [messages list])}
@@ -10,7 +12,7 @@ data_base = {}
 # listed_members = [(address, [name]), (address, [name])]
 listed_members = []
 
-
+# Checking if a user in the database.
 def in_data_base(address):
     if data_base.get(address):
         return True
@@ -26,7 +28,7 @@ def send_names(address):
     # Sending the message to the user.
     s.sendto(name_msg.encode(), address)
 
-
+# Add a new user to the database.
 def add_to_database(name, address):
     # Checking if the dictionary is empty or not.
     if data_base:
@@ -136,11 +138,6 @@ def switch(full_msg, address):
 
 
 def validations(msg, addr1):
-    # DElete!!!!!!!!!!!!1 test
-    print(msg)
-    print("len of message = " + str(len(msg)))
-
-
     choice_num = msg[2]
     # If the request is not by format or not in the manu range, return an error message.
     if not choice_num.isnumeric() or int(choice_num) not in range(1, 6):
@@ -162,7 +159,6 @@ def validations(msg, addr1):
 
 
 while True:
-    print("database =", data_base)
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
     # Store the data in a new string.
