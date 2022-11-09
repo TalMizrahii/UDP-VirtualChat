@@ -136,9 +136,13 @@ def switch(full_msg, address):
 
 
 def validations(msg, addr1):
+    # DElete!!!!!!!!!!!!1 test
+    print(msg)
+    print("len of message = " + str(len(msg)))
+
     choice_num = msg[2]
     # If the request is not by format or not in the manu range, return an error message.
-    if not choice_num.isnumeric() or not int(str_message[2]) in range(1, 6):
+    if not choice_num.isnumeric() or not int(choice_num) in range(1, 6):
         return False
     # if the request is to join the group, but the user is already in it, return error.
     if int(choice_num) == 1 and in_data_base(addr1):
@@ -149,18 +153,20 @@ def validations(msg, addr1):
     # If requests 4 or 5 is not by format
     if (choice_num == '4' or choice_num == '5') and len(msg) != 4:
         return False
+    # If the format for ops 1, 2 or 3 is not valid, return.
     if choice_num == '1' or choice_num == '2' or choice_num == '3' and len(msg) < 5 and msg[3] != ' ':
         return False
-
+    # If passed all validations, return True.
     return True
 
 
 while True:
+    print("database =", data_base)
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
     # Store the data in a new string.
     message = str(data)
-    if not valis(message, addr):
+    if not validations(message, addr):
         s.sendto("Illegal request".encode(), addr)
         continue
     # If the request is valid, preform an action.
