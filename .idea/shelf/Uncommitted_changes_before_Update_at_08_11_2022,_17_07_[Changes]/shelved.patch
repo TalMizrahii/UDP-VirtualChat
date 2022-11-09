@@ -1,0 +1,212 @@
+Index: client.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import socket\nimport sys\n\nserver_ip = str(sys.argv[1])\nserver_port = int(sys.argv[2])\n\n\ns = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\n\nwhile True:\n    msg = input()\n    s.sendto(msg.encode(), (server_ip, server_port))\n    data, addr = s.recvfrom(1024)\n\n    if not bool(data):\n        print(\"Illegal request\")\n        continue\n    print(str(data))\n    if msg[0] == 4:\n        break\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/client.py b/client.py
+--- a/client.py	(revision 4c5e9a4444a0fc26f2b685043ef8df989af2a905)
++++ b/client.py	(date 1667848092435)
+@@ -14,7 +14,6 @@
+ 
+     if not bool(data):
+         print("Illegal request")
+-        continue
+     print(str(data))
+     if msg[0] == 4:
+         break
+Index: server.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import socket\nimport sys\n\ns = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\nserver_port = str(sys.argv[1])\n\ns.bind(('', int(server_port)))\ndata_base = {}\n\n\ndef valid_address(address):\n    if data_base.get(address):\n        return True\n    return False\n\n\nwhile True:\n    data, addr = s.recvfrom(144523463)\n    message = str(data)\n    if message[2].isnumeric() and int(message[2]) in range(1, 6):\n        print(\"Ok valid\")\n        s.sendto(str(True).encode(), addr)\n        if valid_address(addr):\n            print(\"ok name\")\n            s.sendto(str(True).encode(), addr)\n\n    s.sendto(str(False).encode(), addr)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server.py b/server.py
+--- a/server.py	(revision 4c5e9a4444a0fc26f2b685043ef8df989af2a905)
++++ b/server.py	(date 1667848092463)
+@@ -15,7 +15,7 @@
+ 
+ 
+ while True:
+-    data, addr = s.recvfrom(144523463)
++    data, addr = s.recvfrom(1024)
+     message = str(data)
+     if message[2].isnumeric() and int(message[2]) in range(1, 6):
+         print("Ok valid")
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.10 (VirtualChat)\" project-jdk-type=\"Python SDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 4c5e9a4444a0fc26f2b685043ef8df989af2a905)
++++ b/.idea/misc.xml	(date 1667848092479)
+@@ -1,4 +1,4 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (VirtualChat)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"89f1014a-d22f-4c89-931a-b88be40a8b1a\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/server.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/server.py\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2HDMZ36ezhTVDDliKbqonhSfYay\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"last_opened_file_path\": \"/home/tal/Desktop/Networks/VirtualChat/server.py\",\n    \"settings.editor.selected.configurable\": \"com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable\"\n  }\n}]]></component>\n  <component name=\"RunManager\" selected=\"Python.client\">\n    <configuration name=\"client\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\n      <module name=\"Virtualchat\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"$PROJECT_DIR$/venv/bin/python\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/client.py\" />\n      <option name=\"PARAMETERS\" value=\"127.0.0.1 22334\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"server\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\n      <module name=\"Virtualchat\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"$PROJECT_DIR$/venv/bin/python\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/server.py\" />\n      <option name=\"PARAMETERS\" value=\"22334\" />\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\n      <option name=\"MODULE_MODE\" value=\"false\" />\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\n      <option name=\"INPUT_FILE\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n    <list>\n      <item itemvalue=\"Python.client\" />\n      <item itemvalue=\"Python.server\" />\n    </list>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"89f1014a-d22f-4c89-931a-b88be40a8b1a\" name=\"Changes\" comment=\"\" />\n      <created>1667815252926</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1667815252926</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"test oc commit\">\n      <created>1667815934494</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667815934494</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"test1\">\n      <created>1667838978830</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667838978830</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"test111\">\n      <created>1667839129855</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667839129855</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"test111\">\n      <created>1667839187794</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667839187794</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"test222\">\n      <created>1667839316548</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667839316548</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"server initialization\">\n      <created>1667846059101</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667846059101</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"server initialization\">\n      <created>1667846146874</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667846146874</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"server initialization\">\n      <created>1667846887243</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667846887243</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"server initialization\">\n      <created>1667846922069</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667846922069</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"server initialization\">\n      <created>1667847069881</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667847069881</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"server initialization\">\n      <created>1667847107745</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667847107745</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"12\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.History.Properties\">\n    <option name=\"COLUMN_ID_ORDER\">\n      <list>\n        <option value=\"Default.Root\" />\n        <option value=\"Default.Author\" />\n        <option value=\"Default.Date\" />\n        <option value=\"Default.Subject\" />\n        <option value=\"Space.CommitStatus\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"test oc commit\" />\n    <MESSAGE value=\"test1\" />\n    <MESSAGE value=\"test111\" />\n    <MESSAGE value=\"test222\" />\n    <MESSAGE value=\"server initialization\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"server initialization\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4c5e9a4444a0fc26f2b685043ef8df989af2a905)
++++ b/.idea/workspace.xml	(date 1667920056227)
+@@ -1,7 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="">
++    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="client change after getting msg 2.0">
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -27,14 +30,14 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "last_opened_file_path": "/home/tal/Desktop/Networks/VirtualChat/server.py",
+-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/home/yuval/Desktop/Networks/ex1/client.py&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager" selected="Python.client">
+     <configuration name="client" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+       <module name="Virtualchat" />
+@@ -43,13 +46,13 @@
+       <envs>
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
++      <option name="SDK_HOME" value="/usr/bin/python3.10" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+       <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client.py" />
+-      <option name="PARAMETERS" value="127.0.0.1 22334" />
++      <option name="PARAMETERS" value="127.0.0.1 12345" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+       <option name="MODULE_MODE" value="false" />
+@@ -64,13 +67,13 @@
+       <envs>
+         <env name="PYTHONUNBUFFERED" value="1" />
+       </envs>
+-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
++      <option name="SDK_HOME" value="/usr/bin/python3.10" />
+       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+       <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+-      <option name="PARAMETERS" value="22334" />
++      <option name="PARAMETERS" value="12345" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />
+       <option name="MODULE_MODE" value="false" />
+@@ -127,61 +130,22 @@
+       <option name="project" value="LOCAL" />
+       <updated>1667839316548</updated>
+     </task>
+-    <task id="LOCAL-00006" summary="server initialization">
+-      <created>1667846059101</created>
++    <task id="LOCAL-00006" summary="client change after getting msg">
++      <created>1667845892160</created>
+       <option name="number" value="00006" />
+       <option name="presentableId" value="LOCAL-00006" />
+       <option name="project" value="LOCAL" />
+-      <updated>1667846059101</updated>
++      <updated>1667845892160</updated>
+     </task>
+-    <task id="LOCAL-00007" summary="server initialization">
+-      <created>1667846146874</created>
++    <task id="LOCAL-00007" summary="client change after getting msg 1.0">
++      <created>1667846116359</created>
+       <option name="number" value="00007" />
+       <option name="presentableId" value="LOCAL-00007" />
+       <option name="project" value="LOCAL" />
+-      <updated>1667846146874</updated>
+-    </task>
+-    <task id="LOCAL-00008" summary="server initialization">
+-      <created>1667846887243</created>
+-      <option name="number" value="00008" />
+-      <option name="presentableId" value="LOCAL-00008" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1667846887243</updated>
+-    </task>
+-    <task id="LOCAL-00009" summary="server initialization">
+-      <created>1667846922069</created>
+-      <option name="number" value="00009" />
+-      <option name="presentableId" value="LOCAL-00009" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1667846922069</updated>
+-    </task>
+-    <task id="LOCAL-00010" summary="server initialization">
+-      <created>1667847069881</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1667847069881</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="server initialization">
+-      <created>1667847107745</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1667847107745</updated>
++      <updated>1667846116359</updated>
+     </task>
+-    <option name="localTasksCounter" value="12" />
++    <option name="localTasksCounter" value="8" />
+     <servers />
+-  </component>
+-  <component name="Vcs.Log.History.Properties">
+-    <option name="COLUMN_ID_ORDER">
+-      <list>
+-        <option value="Default.Root" />
+-        <option value="Default.Author" />
+-        <option value="Default.Date" />
+-        <option value="Default.Subject" />
+-        <option value="Space.CommitStatus" />
+-      </list>
+-    </option>
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+@@ -199,7 +163,9 @@
+     <MESSAGE value="test1" />
+     <MESSAGE value="test111" />
+     <MESSAGE value="test222" />
+-    <MESSAGE value="server initialization" />
+-    <option name="LAST_COMMIT_MESSAGE" value="server initialization" />
++    <MESSAGE value="client change" />
++    <MESSAGE value="client change after getting msg" />
++    <MESSAGE value="client change after getting msg 1.0" />
++    <option name="LAST_COMMIT_MESSAGE" value="client change after getting msg 1.0" />
+   </component>
+ </project>
+\ No newline at end of file
