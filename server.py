@@ -107,35 +107,36 @@ def switch(full_msg, address):
     command_num = int(full_msg[2])
     sorted_message = full_msg[4:-1]
     # "Switch case"
-    match command_num:
-        # Fulfill the client request to join the group.
-        case 1:
-            add_to_database(sorted_message, address)
-            return True
-        # Fulfill the client request to send a message to the group.
-        case 2:
-            update_me(address)
-            send_message_user(sorted_message, address)
-            return True
-        # Fulfill the client request to change is name
-        case 3:
-            update_me(address)
-            change_name(sorted_message, address)
-            return True
-        # Fulfill the client request to leave the group.
-        case 4:
-            update_me(address)
-            leave_group(address)
-            return True
-        case 5:
-            update_me(address)
-            return True
-        # The default case when is request is not legal.
-        case _:
-            return False
+    # Fulfill the client request to join the group.
+    if command_num == 1:
+        add_to_database(sorted_message, address)
+        return True
+    # Fulfill the client request to send a message to the group.
+    elif command_num == 2:
+        update_me(address)
+        send_message_user(sorted_message, address)
+        return True
+        # Fulfill the client request to change is name.
+    elif command_num == 3:
+        update_me(address)
+        change_name(sorted_message, address)
+        return True
+    # Fulfill the client request to leave the group.
+    elif command_num == 4:
+        update_me(address)
+        leave_group(address)
+        return True
+    elif command_num == 5:
+        update_me(address)
+        return True
+    # The default case when is request is not legal.
+    else:
+        return False
 
 
 while True:
+    # Delete
+    print(data_base)
 
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
