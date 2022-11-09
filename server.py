@@ -21,8 +21,8 @@ def in_data_base(address):
 def send_names(address):
     name_msg = ''
     for person in listed_members[::-1]:
-        name_msg += person[1][0] + "\n"
-    name_msg = name_msg[:-1]
+        name_msg += person[1][0] + ", "
+    name_msg = name_msg[:-2]
     # Sending the message to the user.
     s.sendto(name_msg.encode(), address)
 
@@ -72,7 +72,7 @@ def change_name(new_name, address):
 # Removing a user from the database and updating all current group members.
 def leave_group(address):
     # Send the user an empty reply.
-    s.sendto(''.encode, address)
+    s.sendto(''.encode(), address)
     # Saving the user's name.
     leaving_user_name = data_base[address][0][0]
     # Deleting the user.

@@ -310,7 +310,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668006276556</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="server and client update:&#10;server - while truw,bug fix&#10;client - no print in the client">
+      <created>1668007909504</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1668007909504</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -347,6 +354,7 @@
     <MESSAGE value="added member's list to the server to monitor member's names." />
     <MESSAGE value="changed from &quot;match&quot; to if/else." />
     <MESSAGE value="major changes in server about validation checks.&#10;added commits to the client." />
-    <option name="LAST_COMMIT_MESSAGE" value="major changes in server about validation checks.&#10;added commits to the client." />
+    <MESSAGE value="server and client update:&#10;server - while truw,bug fix&#10;client - no print in the client" />
+    <option name="LAST_COMMIT_MESSAGE" value="server and client update:&#10;server - while truw,bug fix&#10;client - no print in the client" />
   </component>
 </project>
