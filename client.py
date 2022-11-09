@@ -11,15 +11,13 @@ while True:
     s.sendto(msg.encode(), (server_ip, server_port))
     data, addr = s.recvfrom(1024)
     server_reply = str(data)
-    if server_reply == str(b'False'):
-        print("Illegal request")
-        continue
-    elif server_reply == str(b''):
+    if msg[0] == 4:
+        break
+    if server_reply == str(b''):
         continue
     server_reply = server_reply[2:-1]
     server_reply = server_reply.split("\\n")
 
     for new_msg in server_reply:
         print(new_msg)
-    if msg[0] == 4:
-        break
+

@@ -71,6 +71,8 @@ def change_name(new_name, address):
 
 # Removing a user from the database and updating all current group members.
 def leave_group(address):
+    # Send the user an empty reply.
+    s.sendto(''.encode, address)
     # Saving the user's name.
     leaving_user_name = data_base[address][0][0]
     # Deleting the user.
@@ -116,14 +118,13 @@ def switch(full_msg, address):
         update_me(address)
         send_message_user(sorted_message, address)
         return True
-        # Fulfill the client request to change is name.
+    # Fulfill the client request to change is name.
     elif command_num == 3:
         update_me(address)
         change_name(sorted_message, address)
         return True
     # Fulfill the client request to leave the group.
     elif command_num == 4:
-        update_me(address)
         leave_group(address)
         return True
     elif command_num == 5:
@@ -134,25 +135,34 @@ def switch(full_msg, address):
         return False
 
 
-while True:
+def validations(msg, addr1):
+    choice_num = msg[2]
+    # If the request is not by format or not in the manu range, return an error message.
+    if not choice_num.isnumeric() or not int(str_message[2]) in range(1, 6):
+        return False
+    # if the request is to join the group, but the user is already in it, return error.
+    if int(choice_num) == 1 and in_data_base(addr1):
+        return False
+    # If the request is to preform an action by a nonmember of the group (except joining the group), return error.
+    if not in_data_base(addr1) and int(choice_num) != 1:
+        return False
+    # If requests 4 or 5 is not by format
+    if (choice_num == '4' or choice_num == '5') and len(msg) != 4:
+        return False
+    if choice_num == '1' or choice_num == '2' or choice_num == '3' and len(msg) < 5 and msg[3] != ' ':
+        return False
 
+    return True
+
+
+while True:
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
     # Store the data in a new string.
     message = str(data)
-    # If the request is not by format or not in the manu range, return an error message.
-    if not message[2].isnumeric() or not int(message[2]) in range(1, 6):
-        s.sendto(str(False).encode(), addr)
-        continue
-    # if the request is to join the group, but the user is already in it, return error.
-    if int(message[2]) == 1 and in_data_base(addr):
-        s.sendto(str(False).encode(), addr)
-        continue
-    # If the request is to preform an action by a nonmember of the group (except joining the group), return error.
-    if not in_data_base(addr) and int(message[2]) != 1:
-        s.sendto(str(False).encode(), addr)
+    if not valis(message, addr):
+        s.sendto("Illegal request".encode(), addr)
         continue
     # If the request is valid, preform an action.
     if not switch(message, addr):
-        s.sendto(str(False).encode(), addr)
-        continue
+        s.sendto("Illegal request".encode(), addr)
