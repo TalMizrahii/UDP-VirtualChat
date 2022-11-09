@@ -17,7 +17,7 @@ while True:
     server_reply = str(data)
     # If the client requests to leave.
     if msg[0] == '4':
-        # Closing the socket' client request to leave the group.
+        # Closing the socket client request to leave the group.
         s.close()
         break
     # The client must get a reply, so if it's empty (no pending updates), continue.
@@ -29,4 +29,3 @@ while True:
     # Printing the reply.
     for new_msg in server_reply:
         print(new_msg)
-

@@ -12,6 +12,7 @@ data_base = {}
 # listed_members = [(address, [name]), (address, [name])]
 listed_members = []
 
+
 # Checking if a user in the database.
 def in_data_base(address):
     if data_base.get(address):
@@ -27,6 +28,7 @@ def send_names(address):
     name_msg = name_msg[:-2]
     # Sending the message to the user.
     s.sendto(name_msg.encode(), address)
+
 
 # Add a new user to the database.
 def add_to_database(name, address):
