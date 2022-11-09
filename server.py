@@ -143,7 +143,7 @@ def validations(msg, addr1):
 
     choice_num = msg[2]
     # If the request is not by format or not in the manu range, return an error message.
-    if not choice_num.isnumeric() or not int(choice_num) in range(1, 6):
+    if not choice_num.isnumeric() or int(choice_num) not in range(1, 6):
         return False
     # if the request is to join the group, but the user is already in it, return error.
     if int(choice_num) == 1 and in_data_base(addr1):
@@ -155,7 +155,7 @@ def validations(msg, addr1):
     if (choice_num == '4' or choice_num == '5') and len(msg) != 4:
         return False
     # If the format for ops 1, 2 or 3 is not valid, return.
-    if choice_num == '1' or choice_num == '2' or choice_num == '3' and len(msg) < 5 and msg[3] != ' ':
+    if choice_num == '1' or choice_num == '2' or choice_num == '3' and (len(msg) < 5 or msg[3] != ' '):
         return False
     # If passed all validations, return True.
     return True
