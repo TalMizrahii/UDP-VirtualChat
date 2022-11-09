@@ -1,3 +1,8 @@
+'''
+Autors: Yuval Arbel, Tal Mizrachi.
+Date: 09/11/2022.
+Version: V1.0
+'''
 import socket
 import sys
 
