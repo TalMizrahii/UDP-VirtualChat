@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="server update:&#10;server change: indentation update">
+    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="added member's list to the server to monitor member's names.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
@@ -44,9 +44,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client.py" />
@@ -65,9 +65,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
@@ -247,49 +247,28 @@
       <option name="project" value="LOCAL" />
       <updated>1667927559206</updated>
     </task>
-    <task id="LOCAL-00023" summary="server and client update:&#10;client change - print the server reply&#10;server change - switch update">
-      <created>1667932444117</created>
+    <task id="LOCAL-00023" summary="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!">
+      <created>1667928306593</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1667932444117</updated>
+      <updated>1667928306593</updated>
     </task>
-    <task id="LOCAL-00024" summary="server and client update:&#10;client change - print the server reply&#10;server change - switch update&#10;server change - send names">
-      <created>1667933128008</created>
+    <task id="LOCAL-00024" summary="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!">
+      <created>1667928364710</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1667933128008</updated>
+      <updated>1667928364710</updated>
     </task>
-    <task id="LOCAL-00025" summary="server and client update:&#10;client change - disregarding empty message&#10;server change - switch update&#10;server change - send names">
-      <created>1667933422357</created>
+    <task id="LOCAL-00025" summary="added member's list to the server to monitor member's names.">
+      <created>1667984242094</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1667933422357</updated>
+      <updated>1667984242094</updated>
     </task>
-    <task id="LOCAL-00026" summary="server and client update:&#10;client change - disregarding empty message&#10;server change - switch update&#10;server change - send names">
-      <created>1667933902741</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1667933902741</updated>
-    </task>
-    <task id="LOCAL-00027" summary="server update:&#10;server change: indentation update">
-      <created>1667934263008</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1667934263008</updated>
-    </task>
-    <task id="LOCAL-00028" summary="server update:&#10;server change: indentation update">
-      <created>1667934787607</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1667934787607</updated>
-    </task>
-    <option name="localTasksCounter" value="29" />
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -323,11 +302,7 @@
     <MESSAGE value="additional send_names" />
     <MESSAGE value="major changes in the server, added multiple functions." />
     <MESSAGE value="major changes in the server, added multiple functions. NOT TESTED!!!!!!!!!!!!!!!" />
-    <MESSAGE value="server change 1.1:&#10;switch case update" />
-    <MESSAGE value="server and client update:&#10;client change - print the server reply&#10;server change - switch update" />
-    <MESSAGE value="server and client update:&#10;client change - print the server reply&#10;server change - switch update&#10;server change - send names" />
-    <MESSAGE value="server and client update:&#10;client change - disregarding empty message&#10;server change - switch update&#10;server change - send names" />
-    <MESSAGE value="server update:&#10;server change: indentation update" />
-    <option name="LAST_COMMIT_MESSAGE" value="server update:&#10;server change: indentation update" />
+    <MESSAGE value="added member's list to the server to monitor member's names." />
+    <option name="LAST_COMMIT_MESSAGE" value="added member's list to the server to monitor member's names." />
   </component>
 </project>
