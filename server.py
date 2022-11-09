@@ -136,8 +136,6 @@ def switch(full_msg, address):
 
 
 while True:
-    # DEleteeeee
-    print(data_base)
 
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
