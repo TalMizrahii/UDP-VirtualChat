@@ -140,6 +140,7 @@ def validations(msg, addr1):
     print(msg)
     print("len of message = " + str(len(msg)))
 
+
     choice_num = msg[2]
     # If the request is not by format or not in the manu range, return an error message.
     if not choice_num.isnumeric() or not int(choice_num) in range(1, 6):
