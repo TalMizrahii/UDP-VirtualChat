@@ -157,9 +157,11 @@ def validations(msg, addr1):
         return False
     # If requests 4 or 5 is not by format
     if (choice_num == '4' or choice_num == '5') and len(msg) != 1:
+        print("OK1")
         return False
     # If the format for ops 1, 2 or 3 is not valid, return.
-    if (choice_num == '1' or choice_num == '2' or choice_num == '3') and (len(msg) < 2 or msg[1] != ' '):
+    if (choice_num == '1' or choice_num == '2' or choice_num == '3') and (len(msg) < 2 or msg[1].isspace()):
+        print("OK2")
         return False
     # If passed all validations, return True.
     return True
