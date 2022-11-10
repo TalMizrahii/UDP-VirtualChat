@@ -1,0 +1,46 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -1,10 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="major changes in server about validation checks.&#10;added commits to the client.">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+-    </list>
++    <list default="true" id="89f1014a-d22f-4c89-931a-b88be40a8b1a" name="Changes" comment="changes of leave group.&#10;changes printing format in send names" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -310,7 +307,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1668006276556</updated>
+     </task>
+-    <option name="localTasksCounter" value="32" />
++    <task id="LOCAL-00032" summary="changes of leave group.&#10;changes printing format in send names">
++      <created>1668007766869</created>
++      <option name="number" value="00032" />
++      <option name="presentableId" value="LOCAL-00032" />
++      <option name="project" value="LOCAL" />
++      <updated>1668007766869</updated>
++    </task>
++    <option name="localTasksCounter" value="33" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.History.Properties">
+@@ -347,6 +351,7 @@
+     <MESSAGE value="added member's list to the server to monitor member's names." />
+     <MESSAGE value="changed from &quot;match&quot; to if/else." />
+     <MESSAGE value="major changes in server about validation checks.&#10;added commits to the client." />
+-    <option name="LAST_COMMIT_MESSAGE" value="major changes in server about validation checks.&#10;added commits to the client." />
++    <MESSAGE value="changes of leave group.&#10;changes printing format in send names" />
++    <option name="LAST_COMMIT_MESSAGE" value="changes of leave group.&#10;changes printing format in send names" />
+   </component>
+ </project>
+\ No newline at end of file
