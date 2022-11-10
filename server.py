@@ -1,8 +1,8 @@
-'''
+"""
 Autors: Yuval Arbel, Tal Mizrachi.
 Date: 09/11/2022.
 Version: V1.0
-'''
+"""
 import socket
 import sys
 
@@ -55,9 +55,9 @@ def add_to_database(name, address):
 def send_message_user(sorted_message, address):
     # Getting The sender's name.
     sender_name = data_base[address][0][0]
-    # appending to all group member the new message to the messages list.
+    # Appending to all group member the new message to the messages list.
     for key in data_base:
-        # all user's, except the ine who sent the message.
+        # All user's, except the ine who sent the message.
         if key != address:
             data_base[key][1].append(sender_name + ": " + sorted_message)
 
@@ -98,9 +98,8 @@ def leave_group(address):
 
 # Update a specific client with all the saved message he missed.
 def update_me(address):
-    # Init an empty message.
+    # Initiating an empty message.
     all_msg = ''
-
     # Appending all the saved message to one string.
     for msg in data_base[address][1]:
         # Add the message with \n.
@@ -149,7 +148,7 @@ def validations(msg, addr1):
     # If the request is not by format or not in the manu range, return an error message.
     if not choice_num.isnumeric() or int(choice_num) not in range(1, 6):
         return False
-    # if the request is to join the group, but the user is already in it, return error.
+    # If the request is to join the group, but the user is already in it, return error.
     if int(choice_num) == 1 and in_data_base(addr1):
         return False
     # If the request is to preform an action by a nonmember of the group (except joining the group), return error.
