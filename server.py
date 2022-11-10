@@ -1,5 +1,6 @@
 """
-Autors: Yuval Arbel, Tal Mizrachi.
+Title: Virtual Chat project for Networks course.
+Authors: Yuval Arbel, Tal Mizrahi.
 Date: 09/11/2022.
 Version: V1.0
 """
@@ -114,8 +115,8 @@ def update_me(address):
 
 # Indicate the client request and execute his request.
 def switch(full_msg, address):
-    command_num = int(full_msg[2])
-    sorted_message = full_msg[4:-1]
+    command_num = int(full_msg[0])
+    sorted_message = full_msg[2:]
     # "Switch case"
     # Fulfill the client request to join the group.
     if command_num == 1:
@@ -144,7 +145,7 @@ def switch(full_msg, address):
 
 
 def validations(msg, addr1):
-    choice_num = msg[2]
+    choice_num = msg[0]
     # If the request is not by format or not in the manu range, return an error message.
     if not choice_num.isnumeric() or int(choice_num) not in range(1, 6):
         return False
@@ -155,10 +156,10 @@ def validations(msg, addr1):
     if not in_data_base(addr1) and int(choice_num) != 1:
         return False
     # If requests 4 or 5 is not by format
-    if (choice_num == '4' or choice_num == '5') and len(msg) != 4:
+    if (choice_num == '4' or choice_num == '5') and len(msg) != 1:
         return False
     # If the format for ops 1, 2 or 3 is not valid, return.
-    if (choice_num == '1' or choice_num == '2' or choice_num == '3') and (len(msg) < 5 or msg[3] != ' '):
+    if (choice_num == '1' or choice_num == '2' or choice_num == '3') and (len(msg) < 2 or msg[1] != ' '):
         return False
     # If passed all validations, return True.
     return True
@@ -168,7 +169,7 @@ while True:
     # Receive data from everyone.
     data, addr = s.recvfrom(1024)
     # Store the data in a new string.
-    message = str(data)
+    message = data.decode()
     if not validations(message, addr):
         s.sendto("Illegal request".encode(), addr)
         continue
