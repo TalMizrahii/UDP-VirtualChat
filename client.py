@@ -34,7 +34,6 @@ while True:
     if server_reply == '':
         continue
     # Sorting thr reply.
-    # server_reply = server_reply[2:-1] ????????
     server_reply = server_reply.split("\\n")
     # Printing the reply.
     for new_msg in server_reply:
