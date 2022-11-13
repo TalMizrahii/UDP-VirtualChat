@@ -33,7 +33,7 @@ while True:
     # The client must get a reply, so if it's empty (no pending updates), continue.
     if server_reply == '':
         continue
-    # Sorting thr reply.
+    # Sorting the reply.
     server_reply = server_reply.split("\\n")
     # Printing the reply.
     for new_msg in server_reply:
