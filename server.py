@@ -9,7 +9,11 @@ import sys
 
 # Opening the server's socket.
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# Getting the port from the system.
 server_port = str(sys.argv[1])
+# If the port is not valid, exit the program.
+if not server_port.isnumeric() or (int(server_port) not in range(0, 65536)):
+    exit(0)
 # Binding the server port (received from the sys).
 s.bind(('', int(server_port)))
 
@@ -156,12 +160,13 @@ def validations(msg, addr1):
     if not in_data_base(addr1) and int(choice_num) != 1:
         return False
     # If requests 4 or 5 is not by format
-    if (choice_num == '4' or choice_num == '5') and len(msg) != 1:
-        print("OK1")
+    if len(msg) == 1 and (choice_num != '4' and choice_num != '5'):
         return False
     # If the format for ops 1, 2 or 3 is not valid, return.
-    if (choice_num == '1' or choice_num == '2' or choice_num == '3') and (len(msg) < 2 or msg[1].isspace()):
-        print("OK2")
+    if (choice_num == '1' or choice_num == '2' or choice_num == '3') and (len(msg) < 3 or msg[1] != ' '):
+        return False
+    # Checking single character validation.
+    if (choice_num == '4' or choice_num == '5') and len(msg) > 1:
         return False
     # If passed all validations, return True.
     return True

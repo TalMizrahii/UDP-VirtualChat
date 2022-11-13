@@ -10,6 +10,9 @@ import sys
 # Getting the ip and server's port from the "Bat Kol".
 server_ip = str(sys.argv[1])
 server_port = int(sys.argv[2])
+# If the port is not valid, exit the program.
+if server_port not in range(0, 65536):
+    exit(0)
 # Opening  anew socket.
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Running the client.
@@ -23,7 +26,7 @@ while True:
     # Decoding the data from the server.
     server_reply = data.decode()
     # If the client requests to leave.
-    if msg[0] == '4':
+    if msg[0] == '4' and len(msg) == 1:
         # Closing the socket client request to leave the group.
         s.close()
         break
