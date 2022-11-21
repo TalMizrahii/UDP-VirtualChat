@@ -17,6 +17,8 @@ No parallelism performed in the program, so only when a user interacts with the 
 
 The Server's purpose is to manage the group's data, store current group members and their names, store pending messages, and be responsible for checking if the client sent a message in the correct format.
 
+The Client receives the Server's port number and IP, and the Server the port number as system arguments.
+
 ## Implementation
 The input to the program is received by the user from the keyboard. After that, the input is passed to a validation check, which accept:
 
