@@ -27,8 +27,11 @@ commends:
 * To receive all pending messages: 5
 
 Any message not by the format specified above will be replied by the server an "Illegal request" message.
+  
+  A full run example:
+  
+<img width="618" alt="Capture" src="https://user-images.githubusercontent.com/103560553/203810324-cacafd9f-34ee-45ea-b3de-bf99a59ffec7.PNG">
 
-&&EXAMPLE$$
 
 ## Implementation
 
