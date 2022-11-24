@@ -48,7 +48,7 @@ The Server receives a port number as a system argument. It binds it to the Serve
 For every message the Server receives from a client, we use several integrity checks to validate the string. 
 If the string does not pass the integrity checks, we print an eror massage and then the client can try again.
 
-The integrity checks incluse:
+The integrity checks include:
 
 * If the request is by format.
 * If the request is to join the group, but the user is already in it.
