@@ -45,7 +45,10 @@ If the Client wants to exit the program (command 4), it closes the module and fi
 
 The Server receives a port number as a system argument. It binds it to the Server's socket.
 
-For every message the Server receives from a client, the Server run validation checks including:
+For every message the Server receives from a client, we use several integrity checks to validate the string. 
+If the string does not pass the integrity checks, we print an eror massage and then the client can try again.
+
+The integrity checks incluse:
 
 * If the request is by format.
 * If the request is to join the group, but the user is already in it.
