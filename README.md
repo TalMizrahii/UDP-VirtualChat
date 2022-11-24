@@ -19,23 +19,18 @@ The Server's purpose is to manage the group's data, store current group members 
 
 The Client receives the Server's port number and IP, and the Server the port number as system arguments.
 
+commends:
+* To join the group: 1 [name]
+* To send a message: 2 [message]
+* To change my name: 3 [new name]
+* to 
 ## Implementation
-The input to the program is received by the user from the keyboard. After that, the input is passed to a validation check, which accept:
 
-* Only doubles or integers.
-* Negative or positive numbers.
-* The vectors must be equally sized.
-* No special characters allowed.
+### The Client module
+The Client receives the Server's port and id numbers as system arguments.
 
-For example, (0, -1.1, 2) and (1, 2, 3) is a valid input, but (a, 3, 4) and (1., .1, 5, 3) is not (not equally sized and contain illegal characters).
-
-Additionally, two out of the five distance function uses the Minkowski distance, because:
-* taxicabDistance = minkowskiDistance(P = 1)
-* euclideanDistance = minkowskiDistance(P = 2)
-
-We used the minkowskiDistance to receive P=2.
-
-The Distances class contains all calculations regard to the algorithms, in addition to the print function, which presents the result of each calculation according to the order specified above.
+He connects to the server via "sendto()" method, and sends him a message.
+If the Client wants to exit the program (command 4)
 
 ## Dependencies
 
