@@ -1,4 +1,13 @@
 # Virtual Chat
+
+<h1 align="center">
+  
+  ![python-logo-glassy](https://user-images.githubusercontent.com/103560553/204082228-92a30920-ca99-4517-9b9d-c3ab44d42a0b.png)
+
+  Computer Networks
+  <br>
+</h1>
+
 <h4 align="center">This gitHub repository is for the assignments given in Computer Networks course, Bar Ilan University.
 
 
