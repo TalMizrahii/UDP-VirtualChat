@@ -82,12 +82,12 @@ $ cd VirtualChat
 
 ```bash
 # Run the server.
-server.py [servers port number]
+$ server.py [servers port number]
 ```
 
 ```bash
 # Run the client.
-Client.py [server's ip] [servers port number]
+$ client.py [server's ip] [servers port number]
 ```
   You can use localhost ip 127.0.0.1 and port number 12345 as run example.
 
