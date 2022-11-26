@@ -73,12 +73,12 @@ $ cd VirtualChat
 
 ```bash
 # Run the server.
-server.py
+server.py [servers port number]
 ```
 
 ```bash
 # Run the client.
-Client.py
+Client.py [server's ip] [servers port number]
 ```
 
 
