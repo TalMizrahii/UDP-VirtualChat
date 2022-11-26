@@ -89,6 +89,7 @@ server.py [servers port number]
 # Run the client.
 Client.py [server's ip] [servers port number]
 ```
+  You can use localhost ip 127.0.0.1 and port number 12345 as run example.
 
 
 ## Authors
